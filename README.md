@@ -21,7 +21,7 @@ The **Employee Attendance Management System** is a web-based application designe
 - **Attendance Reports**: Admins can view detailed attendance records for each employee.
 - **Dashboard**: A comprehensive overview of all employees and their attendance data.
 
----
+
 ## Dependencies
 
 This project requires the following dependencies:
@@ -34,7 +34,7 @@ This project requires the following dependencies:
 - **ejs**: Templating engine for rendering views.
 - **express-session**: For managing user sessions.
 - **connect-flash**: For flash messages during user interactions.
----
+
 
 ## Installation
 
