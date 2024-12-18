@@ -1,0 +1,45 @@
+<!-- html starting tage and sidebar main content div -->
+<%- include('../partials/sidebar') %>
+
+  <!-- Topbar -->
+  <%- include('../partials/topbar') %>
+
+    <!-- Content -->
+    <main class="main p-3">
+      <div class="d-flex justify-content-between p-3 m-2">
+        <h4 class="page-title">Departments</h4>
+        <a class="btn btn-primary text-center rounded-pill" href="/admin/departments" role="button"><i class="fa-solid fa-arrow-left"></i> Back</a>
+      </div>
+      <form action="/admin/departments/add" method="post" class="p-5">
+        <div class="row">
+          <div class="col">
+            <label for="departmentId" class="form-label">Department Id</label>
+            <input type="text" class="form-control" id="departmentId" name="departmentId"></label>
+          </div>
+          <div class="col">
+            <label for="departmentName" class="form-label">Department Name</label>
+            <input type="text" class="form-control" id="departmentName" name="departmentName"></label>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+
+         
+          <label class="gen-label">Status</label>
+          <div>
+            <label class="me-3 mt-1"><input type="radio" name="statusDep" value="active" checked> Active</label>
+
+            <label><input type="radio" name="statusDep" value="inactive"> Inactive</label>
+          </div>
+        </div>
+        </div>
+        <div class="d-flex justify-content-center">
+
+          <button type="submit" class="btn btn-primary ">ADD DEPARTMENT</button>
+        </div>
+      </form>
+
+    </main>
+
+    <!-- Footer -->
+    <%- include('../partials/footer') %>

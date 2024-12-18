@@ -1,0 +1,138 @@
+<!-- html starting tage and sidebar main content div -->
+<%- include('../partials/sidebar') %>
+
+  <!-- Topbar -->
+  <%- include('../partials/topbar') %>
+<!--  -->
+
+
+    <!-- Content -->
+    <main class="main p-2">
+      <div class="d-flex justify-content-between p-3 m-2">
+        <h5 class="page-title">Add Employee</h5 >
+        <a class="btn btn-primary text-center rounded-pill" href="/admin/employees" role="button"><i class="fa-solid fa-arrow-left"></i> Back</a>
+      </div>
+
+        <form  action="/admin/Employees/add" method="post" class="p-5">
+          <div class="row mb-3">
+            <div class="col ">
+              <label for="firstName" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="firstName" name="firstName">
+            </div>
+            <div class="col">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="lastName" name="lastName">
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="col">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email">
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <div class="col">
+              <label for="joiningDate" class="form-label">Joining Date</label>
+              <input type="text" class="form-control" id="joiningDate" name="joiningDate" data-datepicker="true" placeholder="YYYY-MM-DD" autocomplete="off">
+            </div>
+          </div>
+
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="shift" class="form-label">Shift</label>
+              <select name="shift" class="form-select" id="">
+                <option value="" disabled selected>Select a shift</option>
+              <% if (shift && shift.length > 0) { %>
+                  <% shift.forEach((shift) => { %>
+                    <option value="<%= shift._id %>">
+                      <%= shift.startTime %> - <%= shift.endTime %>
+                    </option>
+                   
+                  <% }); %>
+                  
+                  <% } else{%>
+                    <option value="" disabled>
+                      No shifts found.
+                    </option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="col">
+              <label for="dateOfBirth">Date of Birth</label>
+              <input type="text" class="form-control" id="dateOfBirth" name="dob" data-datepicker="true" placeholder="YYYY-MM-DD" autocomplete="off">
+            </div>
+          </div>
+
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="phone" class="form-label">Phone</label>
+              <input type="text" class="form-control" id="phone" name="phone">
+            </div>
+            <div class="col radio">
+              <label class="gen-label">Gender</label>
+              <div>
+                <label><input type="radio" name="gender" value="male" checked> Male</label>
+
+                <label><input type="radio" name="gender" value="female"> Female</label>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="department" class="form-label">Department</label>
+              <select name="department" class="form-select" id="">
+                <option value="" disabled selected>Select a Department</option>
+
+              <% if (department && department.length > 0) { %>
+                  <% department.forEach((department) => { %>
+
+                    <option  value="<%= department._id %>">
+                      <%= department.departmentName%> - <%= department.departmentId%>
+                    </option>
+                   
+                  <% }); %>
+                  
+                  <% } else{%>
+                    <option value="" disabled>
+                      No departments found.
+                    </option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="col">
+              <label class="gen-label">Status</label>
+              <div>
+                <label><input type="radio" name="statusEmp" value="active" checked> Active</label>
+
+                <label><input type="radio" name="statusEmp" value="inactive"> Inactive</label>
+              </div>
+            </div>
+
+          </div>
+          <div class="d-flex justify-content-center">
+
+            <button  type="submit" class="btn btn-primary ">ADD EMPLOYEE</button>
+          </div>
+
+        </form>
+
+
+    </main>
+
+    <!-- Footer -->
+    <%- include('../partials/footer') %>

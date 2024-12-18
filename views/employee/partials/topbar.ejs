@@ -1,0 +1,30 @@
+<header class="topbar d-flex align-items-center justify-content-between">
+  <div>
+    <button class="btn btn-outline-primary rounded  me-4" id="toggleSidebar">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+  <div class="profile dropdown">
+    <i class="fa-regular fa-bell"></i>
+
+    <img src="/images/profile.jpg" alt="Profile" class="rounded-circle img-profile">
+
+    <a href="#" class="dropdown-toggle text-decoration-none" type="button" data-bs-toggle="dropdown"
+      aria-expanded="false">
+      <%= employee.username %>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><a class="dropdown-item" href="#"><i class="fa-regular fa-user"></i> Profile</a></li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li>
+        <form action="/auth/logout" method="post">
+          <button type="submit" class="dropdown-item">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+        </form>
+        
+      </li>
+    </ul>
+  </div>
+</header>

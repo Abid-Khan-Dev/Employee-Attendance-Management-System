@@ -1,0 +1,71 @@
+<!-- html starting tage and sidebar main content div -->
+<%- include('./partials/sidebar') %>
+
+  <!-- Topbar -->
+  <%- include('./partials/topbar') %>
+
+    <!-- Content -->
+    <main class="main">
+      <div class="rounded px-3 ">
+
+        <!-- Dashboard Cards section -->
+        <div class="row mb-2 d-flex gap-2 justify-content-around align-items-center ">
+          
+          <% if(employees && employees.length> 0) {%>             
+              <div class="col-md-3 shadow bg-white card-design px-3 py-2 rounded d-flex justify-content-between align-items-center">
+                <span class="text-center rounded-circle">
+                  <i class="fa-solid fa-user text-white p-3  bg-success rounded-circle"></i>
+                </span>
+                <div>
+                  <h5 class="text-end text-success"><%= employees.length %></h5>
+                  <span class="badge bg-success">Employees</span>
+                </div>
+              </div>
+            <% } %>
+
+
+        <!-- for Departments -->
+        <% if(departments && departments.length> 0) {%>             
+          <div class="col-md-3 shadow bg-white card-design px-3 py-2 rounded d-flex justify-content-between align-items-center">
+            <span class="text-center rounded-circle">
+              <i class="fa-regular fa-building text-white p-3 bg-warning rounded-circle"></i>
+            </span>
+            <div>
+              <h5 class="text-end text-warning"><%= departments.length %></h5>
+              <span class="badge bg-warning">Departments</span>
+            </div>
+          </div>
+        <% } %>
+
+        <!-- for Shifts -->
+        <% if(shifts && shifts.length> 0) {%>             
+          <div class="col-md-3 shadow bg-white card-design px-3 py-2 rounded d-flex justify-content-between align-items-center">
+            <span class="text-center rounded-circle">
+              <i class="fa-regular fa-calendar text-white p-3 bg-primary rounded-circle bg-info"></i>
+            </span>
+            <div>
+              <h5 class="text-end text-info"><%= shifts.length %></h5>
+              <span class="badge bg-info ">Shifts</span>
+            </div>
+          </div>
+        <% } %>
+
+        </div>
+
+        <!-- view attendance and all employees -->
+        <div class="row d-flex gap-2 mt-4">
+          <div class="col-9 bg-white rounded ">
+
+
+          </div>
+
+          <div class="col-2 bg-white rounded">
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <%- include('./partials/footer') %>

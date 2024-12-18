@@ -1,0 +1,141 @@
+<!-- html starting tage and sidebar main content div -->
+<%- include('../partials/sidebar') %>
+
+  <!-- Topbar -->
+  <%- include('../partials/topbar') %>
+<!--  -->
+  
+    <!-- Content -->
+    <main class="main p-2">
+      <div class="d-flex justify-content-between p-3 m-2">
+        <h5 class="page-title">Edit Employee</h5 >
+        <a class="btn btn-primary text-center rounded-pill" href="/admin/employees" role="button"><i class="fa-solid fa-arrow-left"></i> Back</a>
+      </div>
+        <form  action="/admin/Employees/edit/<%= employee._id %>" method="post" class="p-5">
+          <div class="row mb-3">
+            <div class="col ">
+              <label for="firstName" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="firstName" value="<%= employee.firstName %>" name="firstName">
+            </div>
+            <div class="col">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="lastName" value="<%= employee.lastName %>" name="lastName">
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username" value="<%= employee.username %>" name="username">
+            </div>
+            <div class="col">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" value="<%= employee.email %>" name="email">
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" value="<%= employee.password %>" name="password">
+            </div>
+            <div class="col">
+              <label for="joiningDate" class="form-label">Joining Date</label>
+              <input type="text" class="form-control" id="joiningDate" value="<%= employee.joiningDate %>" name="joiningDate" data-datepicker="true" placeholder="YYYY-MM-DD" autocomplete="off">
+          </div>
+        </div>
+
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="shift" class="form-label">Shift</label>
+
+              <select name="shift" class="form-select" id="shift">
+                <% if (shift && shift.length > 0) { %>
+                <option value="" disabled >Select a shift</option>
+                    <!-- render all shifts -->
+                  <% shift.forEach((s) => { %>
+                    <option value="<%= s._id %>" <%= employee.shift && employee.shift._id.toString() === s._id.toString() ? 'selected' : '' %> >
+                      <%= s.startTime %> - <%= s.endTime %>
+                    </option>
+                   
+                  <% }); %>
+                  <% } else {%>
+                    <option value="" disabled>No shifts available</option>
+                    <% } %>
+                </select>
+
+            </div>
+            <div class="col">
+              <label for="dateOfBirth">Date of Birth</label>
+              <input type="text" class="form-control" id="dateOfBirth" value="<%= employee.dob %>" name="dob" data-datepicker="true" placeholder="YYYY-MM-DD" autocomplete="off">
+            </div>
+          </div>
+
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="phone" class="form-label">Phone</label>
+              <input type="text" class="form-control" id="phone" value="<%= employee.phone %>" name="phone">
+            </div>
+            <div class="col radio">
+              <label class="gen-label">Gender</label>
+              <div>
+
+                  <label class="me-2"><input type="radio" name="gender" value="male" <%= employee.gender === 'male' ? 'checked' : '' %>> Male</label>
+
+                  <label><input type="radio" name="gender" value="female" <%= employee.gender === 'female' ? 'checked' : '' %>> Female</label>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="department" class="form-label">Department</label>
+              <select name="department" class="form-select" id="">
+                <% if (department && department.length > 0) { %>
+               <option value="" disabled>Select a Department</option>
+
+                  <!-- it will render all the departments and select the existing one -->
+                  <% department.forEach((d) => { %>
+                    <option value="<%= d._id %>" <%= employee.department && employee.department._id.toString() === d._id.toString() ? 'selected' : '' %>>
+                      <%= d.departmentName%> - <%= d.departmentId%>
+                    </option>
+                   
+                  <% }); %>
+                  <% } else {%>
+                    <option value="" disabled>No departments available</option>
+                    <% } %>
+                   
+                </select>
+            </div>
+            <div class="col">
+              <label class="gen-label">Status</label>
+              <div>
+              <% if(employee.statusEmp === "active") { %>
+                <label class="me-2"><input type="radio" name="statusEmp" value="active" checked> Active</label>
+                <label><input type="radio" name="statusEmp" value="inactive"> Inactive</label>
+                <%} else {%>
+
+                  <label class="me-2"><input type="radio" name="statusEmp" value="active"> Active</label>
+
+                  <label><input type="radio" name="statusEmp" value="inactive" checked> Inactive</label>
+                  <% } %>
+
+              </div>
+            </div>
+
+          </div>
+          <div class="d-flex justify-content-center">
+
+            <button  type="submit" class="btn btn-primary ">SAVE CHANGES</button>
+          </div>
+
+        </form>
+
+    </main>
+
+    <!-- Footer -->
+    <%- include('../partials/footer') %>

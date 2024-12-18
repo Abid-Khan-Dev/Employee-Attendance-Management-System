@@ -1,0 +1,94 @@
+<!-- html starting tage and sidebar main content div -->
+<%- include('../partials/sidebar') %>
+
+  <!-- Topbar -->
+  <%- include('../partials/topbar') %>
+
+ <!-- Success and Failure Messages -->
+ <%- include('../../alerts') %>
+ 
+    <!-- Content -->
+    <main class="main p-3">
+      <div class="d-flex justify-content-between my-2">
+        <h5 class="page-title">Employees</h5>
+        <a class="btn btn-primary text-center rounded-pill" href="/admin/employees/add" role="button"><i class="fa-solid fa-plus"></i> Add Employee</a>
+      </div>
+
+
+      <table class="table table-hover caption-top border mt-5">
+        <caption>List of Employees</caption>
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Department</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if(employees && employees.length> 0) {%>
+            <% employees.forEach((employee, index )=> { %>
+              <tr>
+                <th scope="row">
+                  <%= index + 1 %>
+                </th>
+                <td>
+                  <%= employee.firstName %>
+                    <%= employee.lastName %>
+                </td>
+                <td>
+                  <%= employee.username %>
+                </td>
+                <td><%= employee.email %>
+                </td>
+                <td>
+                  <%= employee.phone %>
+                </td>
+                <td>
+                  <%= employee.department && employee.department.departmentName  ? employee.department.departmentName : 'N/A' %>
+                </td>
+                <td>
+                  <%= employee.statusEmp %>
+                </td>
+                <td class="text-end">
+                  <div class="dropdown">
+                    <a class="btn btn-outline-0" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                          <a href="/admin/employees/edit/<%= employee._id %>" class="dropdown-item">
+                            <i class="fa-solid fa-user-pen text-primary"></i> Edit
+                          </a>
+                      </li>
+                      <li>
+                        <form action="/admin/employees/delete/<%= employee._id %>" method="POST">
+                          <button type="submit" class="dropdown-item">
+                            <i class="fa-regular fa-trash-can text-danger"></i> Delete
+                          </button>
+                        </form>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+              <% } )%>
+                <% }else{ %>
+                  <tr>
+                    <td colspan="8" class="text-center">No employees found.</td>
+                  </tr>
+                  <% } %>
+
+        </tbody>
+      </table>
+
+ 
+
+    </main>
+
+    <!-- Footer -->
+    <%- include('../partials/footer') %>

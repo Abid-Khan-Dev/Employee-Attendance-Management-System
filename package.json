@@ -1,0 +1,29 @@
+{
+  "name": "eams",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "Abid_K",
+  "license": "ISC",
+  "description": "An Employee Attendance Management System for tracking and managing employee attendance.",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "express-sesssion": "^1.15.5",
+    "flash": "^1.1.0",
+    "mongoose": "^8.8.2",
+    "morgan": "^1.10.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "vanillajs-datepicker": "^1.3.4"
+  }
+}

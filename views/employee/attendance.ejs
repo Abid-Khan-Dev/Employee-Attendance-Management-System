@@ -1,0 +1,123 @@
+<!-- Sidebar -->
+<%- include('./partials/sidebar') %>
+
+<!-- Topbar -->
+<%- include('./partials/topbar') %>
+
+ <!-- Success and Failure Messages -->
+ <%- include('../alerts') %>
+ 
+<!-- Content -->
+<main class="main">
+  <div class="rounded p-3">
+
+    <!-- heading -->
+    <h4>Mark Attendance</h4>
+
+    <!-- Current Time -->
+    <div class="d-flex justify-content-end align-items-center">
+      <p>Current Time: <span id="currentTime"></span></p>
+    </div>
+
+    <!-- Attendance Forms -->
+    <div class="row g-4 justify-content-center">
+      
+      <!-- Check In Form -->
+      <div class="col-md-5">
+        <form id="checkInForm" action="/dashboard/attendance/checkin" method="post">
+          <h5>Check In</h5>
+          <div class="mb-2">
+            <label for="shift" class="form-label">Shift</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              name="shift" 
+              id="shift" 
+              placeholder="<%= employee.shift.startTime %> - <%= employee.shift.endTime %>" 
+              disabled>
+          </div>
+          <div class="mb-2">
+            <label for="location" class="form-label">Location</label>
+            <select class="form-select" name="location" id="location" required>
+              <% if (locations && locations.length > 0) { %>
+                <option value="" selected disabled>Select Location</option>
+                <% locations.forEach(location => { %>
+                  <option value="<%= location._id %>"><%= location.locationName %></option>
+                <% }) %>
+              <% } else { %>
+                <option value="" disabled>No locations available</option>
+              <% } %>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="message" class="form-label">Message</label>
+            <textarea 
+              name="message" 
+              id="message" 
+              class="form-control" 
+              rows="3"
+              placeholder="Optional"></textarea>
+          </div>
+          <input type="hidden" name="employeeId" value="<%= employee._id %>">
+          <button type="submit" class="btn btn-success w-100"  <%= attendance && attendance.checkIn ? "disabled" : '' %>>
+            <i class="fa-solid fa-sign-in-alt"></i> 
+            Check In</button>
+        </form>
+      </div>
+
+      <!-- Check Out Form -->
+      <div class="col-md-5">
+        <form id="checkOutForm" action="/dashboard/attendance/checkout" method="post">
+          <h5>Check Out</h5>
+          <p>If you're done for the day, click below to check out.</p>
+          <input type="hidden" name="employeeId" value="<%= employee._id %>">
+          <button type="submit" class="btn btn-danger w-100" <%= attendance && attendance.checkOut ? 'disabled' : '' %>><i class="fa-solid fa-sign-out-alt"></i> Check Out</button>
+        </form>
+        <div class="mt-3">
+          <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#leaveModel"><i class="fa-solid fa-paper-plane"></i> Apply for Leave</button>
+
+          <div class="modal fade" id="leaveModel" tabindex="-1" aria-labelledby="leaveModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="leaveModalLabel">Apply For Leave</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form class="p-md-3" action="/dashboard/attendance/leave">
+                    <div class="mb-3">
+                      <label for="leave-type" class="form-label">Leave Type</label>
+                      <select class="form-select" aria-label=".form-select-sm leave-type" name="leaveType" id="leave-type">
+                        <option selected disabled>Select a type</option>
+                        <option value="1">Annual Leave</option>
+                        <option value="2">Sick Leave</option>
+                        <option value="3">Other Leave</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="startDate" class="form-label" >Start Date</label>
+                      <input type="date" class="form-control" id="startDate">
+                    </div>
+                    <div class="mb-3">
+                      <label for="endDate" class="form-label" >End Date</label>
+                      <input type="date" class="form-control" id="endDate">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<%- include('./partials/footer') %>
