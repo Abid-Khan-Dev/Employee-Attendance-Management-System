@@ -36,7 +36,7 @@ router.post('/checkin', async (req, res) => {
 
         const attendance = await Attendance.findOne({ employeeId, date: today });
         if (attendance) {
-            req.flash('error', 'Already checked in today.');
+            req.flash('error', 'You have already checked in today.');
             return res.redirect('/dashboard/attendance');
         }
         // console.log(attendance)
@@ -54,6 +54,7 @@ router.post('/checkin', async (req, res) => {
         return res.redirect('/dashboard/attendance');
 
     } catch (error) {
+        console.error('Error during check-in:', error);
         req.flash('error', 'Failed to Mark Attendance!, Please try later.')
         return res.redirect('/dashboard/attendance');
     }
@@ -75,22 +76,32 @@ router.post('/checkout', async (req, res) => {
             return res.redirect('/dashboard/attendance');
         }
         if (attendance.checkOut) {
-            req.flash('error', 'Already checked out today.');
+            req.flash('error', 'You have already checked out today.');
             return res.redirect('/dashboard/attendance');
         }
+
         attendance.checkOut = new Date();
 
-        // it stores in hours like 8
-        const totalHours = (attendance.checkOut - attendance.checkIn) / (1000 * 60 * 60);
+        // Calculate total hours
+        const totalHours = ((attendance.checkOut - attendance.checkIn) / (1000 * 60 * 60)).toFixed(2);
         // console.log(totalHours);
 
+        const minimumHourse = 0.25;
+        if(totalHours < minimumHourse){
+            req.flash('error', 'Check-out is too soon after check-in. wait for at least 15 minutes.');
+            return res.redirect('/dashboard/attendance');
+        }
+
+
+        // save the total hours
         attendance.totalHours = totalHours;
         await attendance.save();
 
-        req.flash('success', 'Check-out Successful!')
+        req.flash('success', `Check-out Successful! Total hours: ${totalHours}`)
         return res.redirect('/dashboard/attendance');
 
     } catch (error) {
+        console.error('Error during check-out:', error);
         req.flash('error', 'Failed to check-out!, Please try later.')
         return res.redirect('/dashboard');
     }
