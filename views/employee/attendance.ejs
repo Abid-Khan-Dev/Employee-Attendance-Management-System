@@ -84,29 +84,33 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <form class="p-md-3" action="/dashboard/attendance/leave">
-                    <div class="mb-3">
+                  <form id="LeaveForm" class="p-md-3" action="/dashboard/leave/apply" method="post">
+                    <div class="mb-md-3">
                       <label for="leave-type" class="form-label">Leave Type</label>
                       <select class="form-select" aria-label=".form-select-sm leave-type" name="leaveType" id="leave-type">
                         <option selected disabled>Select a type</option>
-                        <option value="1">Annual Leave</option>
-                        <option value="2">Sick Leave</option>
-                        <option value="3">Other Leave</option>
+                        <option value="Annual">Annual Leave</option>
+                        <option value="Sick">Sick Leave</option>
+                        <option value="Other">Other Leave</option>
                       </select>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-md-3">
                       <label for="startDate" class="form-label" >Start Date</label>
-                      <input type="date" class="form-control" id="startDate">
+                      <input type="date" name="startDate" class="form-control" id="startDate">
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-md-3">
                       <label for="endDate" class="form-label" >End Date</label>
-                      <input type="date" class="form-control" id="endDate">
+                      <input type="date" name="endDate"  class="form-control" id="endDate">
+                    </div>
+                    <div class="mb-md-3">
+                      <label for="leaveMessage" class="form-label" >Message</label>
+                      <textarea cols="2" class="form-control" name="message" id="leaveMessage" placeholder="Optional"></textarea>
                     </div>
                   </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Apply</button>
+                  <button form="LeaveForm"  type="submit" class="btn btn-primary">Apply</button>
                 </div>
               </div>
             </div>

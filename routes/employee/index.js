@@ -21,6 +21,7 @@ const auth = require('./auth')
 const dashboard = require('./dashboard')
 const attendance = require('./attendance')
 const report = require('./report')
+const leave = require('./leave')
 
 
 // Associating base paths with route files and setting middlewares
@@ -28,5 +29,6 @@ router.use('/auth', auth);
 router.use('/dashboard', middleware.isLoggedIn, dashboard);
 router.use('/dashboard/attendance', middleware.isLoggedIn, attendance);
 router.use('/dashboard/report', middleware.isLoggedIn, report);
+router.use('/dashboard/leave', middleware.isLoggedIn, leave);
 
 module.exports = router;

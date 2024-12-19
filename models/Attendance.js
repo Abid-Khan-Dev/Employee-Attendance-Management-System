@@ -13,7 +13,6 @@ const attendanceSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    
   },
   checkIn: {
     type: Date,
