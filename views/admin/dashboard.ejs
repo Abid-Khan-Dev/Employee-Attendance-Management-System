@@ -6,63 +6,87 @@
 
     <!-- Content -->
     <main class="main">
-      <div class="rounded px-3 ">
+      <div class="rounded px-3">
 
         <!-- Dashboard Cards section -->
         <div class="row mb-2 d-flex gap-2 justify-content-around align-items-center ">
-          
-          <% if(employees && employees.length> 0) {%>             
-              <div class="col-md-3 shadow bg-white card-design px-3 py-2 rounded d-flex justify-content-between align-items-center">
+                    
+              <div class=" col-md-3 col-sm-5 shadow bg-white card-design px-3 py-2 rounded d-flex justify-content-between align-items-center">
                 <span class="text-center rounded-circle">
                   <i class="fa-solid fa-user text-white p-3  bg-success rounded-circle"></i>
                 </span>
                 <div>
-                  <h5 class="text-end text-success"><%= employees.length %></h5>
+                  <h5 class="text-end text-success"><%=employees && employees.length > 0 ? employees.length : '0' %></h5>
                   <span class="badge bg-success">Employees</span>
                 </div>
               </div>
-            <% } %>
+          
 
 
-        <!-- for Departments -->
-        <% if(departments && departments.length> 0) {%>             
-          <div class="col-md-3 shadow bg-white card-design px-3 py-2 rounded d-flex justify-content-between align-items-center">
+        <!-- for Departments -->           
+          <div class=" col-md-3 col-sm-5 shadow bg-white card-design px-3 py-2 rounded d-flex justify-content-between align-items-center">
             <span class="text-center rounded-circle">
               <i class="fa-regular fa-building text-white p-3 bg-warning rounded-circle"></i>
             </span>
             <div>
-              <h5 class="text-end text-warning"><%= departments.length %></h5>
+              <h5 class="text-end text-warning"><%=departments && departments.length > 0 ? departments.length : '0' %></h5>
               <span class="badge bg-warning">Departments</span>
             </div>
           </div>
-        <% } %>
+
 
         <!-- for Shifts -->
-        <% if(shifts && shifts.length> 0) {%>             
-          <div class="col-md-3 shadow bg-white card-design px-3 py-2 rounded d-flex justify-content-between align-items-center">
+          
+          <div class=" col-md-3 col-sm-5 shadow bg-white  px-3 py-2 rounded d-flex justify-content-between align-items-center">
             <span class="text-center rounded-circle">
               <i class="fa-regular fa-calendar text-white p-3 bg-primary rounded-circle bg-info"></i>
             </span>
             <div>
-              <h5 class="text-end text-info"><%= shifts.length %></h5>
+              <h5 class="text-end text-info"><%= shifts && shifts.length > 0 ? shifts.length : '0' %></h5>
               <span class="badge bg-info ">Shifts</span>
             </div>
           </div>
-        <% } %>
 
         </div>
 
-        <!-- view attendance and all employees -->
-        <div class="row d-flex gap-2 mt-4">
-          <div class="col-9 bg-white rounded ">
-
-
+        <!-- view All Pending Requests -->
+      <div class="row mt-4">
+        <div class="col-md-6 col-sm-12 col-lg-5 mb-4">
+          <div class="card border-0 shadow bg-white rounded">
+              <div class="card-body d-flex flex-column justify-content-between">
+                  <h5 class="card-title text-success">Leave Requests</h5>
+                  <ul class="list-group leave-requests list-group-flush flex-grow-1">
+                    <% if (leaves && leaves.length > 0) { %>
+                     <% leaves.forEach(leave => { %>
+                      
+                      <li class="list-group-item d-flex justify-content-between align-items-center text-capitalize">
+                          <span><%= leave.employeeId.firstName %><%= leave.employeeId.lastName %></span>
+                          <span class="mx-3" ><%= leave.leaveType %></span>
+                          <span class="badge <% if (leave.leaveStatus === 'Pending') { %>
+                           bg-warning
+                          <% } else if(leave.leaveStatus === 'Approved') {%>
+                            bg-success
+                            <%} else if(leave.leaveStatus === 'Rejected') {%>
+                              bg-danger
+                            <% } %>
+                          "> <%= leave.leaveStatus %> </span>
+                        </li>
+                     <% }) %>
+                    <% } else {%>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">No leave requests available.</li>
+                      <% } %>
+                     
+                  </ul>
+                  <div class="mt-3">
+                      <a href="#" class="btn btn-outline-primary btn-sm">View All Requests</a>
+                  </div>
+              </div>
           </div>
+      </div>
 
-          <div class="col-2 bg-white rounded">
-
-          </div>
-        </div>
+      </div>
+      
+      
 
       </div>
     </main>

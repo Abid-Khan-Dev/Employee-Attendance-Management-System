@@ -22,19 +22,19 @@ body {
     flex-direction: column;
     height: 100vh;
   }
+
   /* dashboard styling */
   .dashborad-icon{
     width: 60px;
     height: 60px;
     padding: 0;
   }
-  /* .card-design{
-    
-    /* background-image: linear-gradient(151deg, rgba(11, 59, 253, 0.462), rgba(255, 255, 255, 0.462) ,rgba(251, 251, 251, 0.462),rgba(251, 251, 251, 0.462), rgb(11 61 253));}
-     */
-    
+  /* show leave request card  */
+  .leave-requests{
+    max-height: 350px;
+    overflow-y: hidden;
+  }
   
-
 
   /* Sidebar Styling */
   .sidebar {
@@ -42,7 +42,7 @@ body {
     background-color: rgb(255, 255, 255);
     color: #333333;
     flex-shrink: 0;
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   .sidebar .nav-link {
@@ -50,13 +50,13 @@ body {
     padding: 8px 17px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     font-size: 16px;
     transition: background-color 0.3s ease;
   }
-
+  
   .sidebar .nav-link:hover {
-    background-color: #f8f9fa;
+    background-color: #f0f7fd;
     color: #007bff;
     border-radius: 8px;
   }
