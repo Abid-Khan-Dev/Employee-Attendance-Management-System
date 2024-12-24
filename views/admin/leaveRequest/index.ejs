@@ -1,0 +1,105 @@
+<!-- html starting tage and sidebar main content div -->
+<%- include('../partials/sidebar') %>
+
+  <!-- Topbar -->
+  <%- include('../partials/topbar') %>
+
+ <!-- Success and Failure Messages -->
+ <%- include('../../alerts') %>
+ 
+    <!-- Content -->
+    <main class="main p-3">
+      <div class="d-flex justify-content-between my-2">
+        <h5 class="page-title">Leave Requests</h5>
+       
+      </div>
+
+      <div class="table-responsive">
+      <table class="table table-hover caption-top border mt-5">
+        <caption>List of Leave Request</caption>
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Type</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if(leaves && leaves.length> 0) {%>
+            <% leaves.forEach((leave, index )=> { %>
+              <tr>
+                <th scope="row">
+                  <%= index + 1 %>
+                </th>
+                <td>
+                  <%= leave.employeeId.firstName %>
+                    <%= leave.employeeId.lastName %>
+                </td>
+                <td>
+                  <%=  leave.employeeId.username %>
+                </td>
+                <td><%= leave.employeeId.email %>
+                </td>
+                <td>
+                  <span class="badge<% if (leave.leaveStatus === 'Pending') { %>
+                    bg-warning
+                   <% } else if(leave.leaveStatus === 'Approved') {%>
+                     bg-success
+                     <%} else if(leave.leaveStatus === 'Rejected') {%>
+                       bg-danger
+                     <% } %> 
+                     ">
+                     <%= leave.leaveType %>
+                    </span>
+                  
+                </td>
+                <td>
+                  <%= leave.leaveStatus %>
+                </td>
+                <td class="text-end">
+                  <div class="dropdown">
+                    <a class="btn btn-outline-0" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                          <a href="/admin/leave/approve/<%= leave._id %>" class="dropdown-item">
+                            <i class="fa-solid fa-user-pen text-primary"></i> Approve
+                          </a>
+                      </li>
+                      <li>
+                          <a href="/admin/leave/reject/<%= leave._id %>" class="dropdown-item">
+                            <i class="fa-solid fa-user-pen text-primary"></i> Reject
+                          </a>
+                      </li>
+                      <li>
+                        <form action="/admin/leave/delete/<%= leave._id %>" method="POST">
+                          <button type="submit" class="dropdown-item">
+                            <i class="fa-regular fa-trash-can text-danger"></i> Delete
+                          </button>
+                        </form>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+              <% } )%>
+                <% }else{ %>
+                  <tr>
+                    <td colspan="8" class="text-center">No leaves found.</td>
+                  </tr>
+                  <% } %>
+
+        </tbody>
+      </table>
+      </div>
+ 
+
+    </main>
+
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
