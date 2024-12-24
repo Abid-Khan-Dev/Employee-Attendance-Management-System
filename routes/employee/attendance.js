@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Attendance = require("../../models/Attendance");
 const Location = require("../../models/Location");
+const formatTotalHours = require("../../utils/formatTime");
 
 router.get("/", async (req, res) => {
   try {
@@ -43,20 +44,19 @@ router.post("/checkin", async (req, res) => {
         req.flash("error", "You have already checked in today.");
         return res.redirect("/dashboard/attendance");
       }
-    } 
-    
-      // console.log(attendance)
-      await Attendance.create({
-        employeeId,
-        message,
-        location,
-        date: today,
-        checkIn: new Date(),
-      });
+    }
 
-      req.flash("success", "Check-in Successful!");
-      return res.redirect("/dashboard/attendance");
-    
+    // console.log(attendance)
+    await Attendance.create({
+      employeeId,
+      message,
+      location,
+      date: today,
+      checkIn: new Date(),
+    });
+
+    req.flash("success", "Check-in Successful!");
+    return res.redirect("/dashboard/attendance");
   } catch (error) {
     console.error("Error during check-in:", error);
     req.flash("error", "Failed to Mark Attendance!, Please try later.");
@@ -101,11 +101,14 @@ router.post("/checkout", async (req, res) => {
       return res.redirect("/dashboard/attendance");
     }
 
+    // format total hours for flash message
+    const formatHours = formatTotalHours(totalHours);
+
     // save the total hours
     attendance.totalHours = totalHours;
     await attendance.save();
 
-    req.flash("success", `Check-out Successful! Total hours: ${totalHours}`);
+    req.flash("success", `Check-out Successful! Total hours: ${formatHours}`);
     return res.redirect("/dashboard/attendance");
   } catch (error) {
     console.error("Error during check-out:", error);

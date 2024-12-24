@@ -1,11 +1,11 @@
 <!-- html starting tage and sidebar main content div -->
-<%- include('../partials/sidebar') %>
+<%- include('./partials/sidebar') %>
 
   <!-- Topbar -->
-  <%- include('../partials/topbar') %>
+  <%- include('./partials/topbar') %>
 
  <!-- Success and Failure Messages -->
- <%- include('../../alerts') %>
+ <%- include('../alerts') %>
  
     <!-- Content -->
     <main class="main p-3">
@@ -23,7 +23,6 @@
             <th scope="col">Email</th>
             <th scope="col">Type</th>
             <th scope="col">Status</th>
-            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -57,36 +56,6 @@
                   <%= leave.leaveStatus %>
                 </span>
                 </td>
-                <td class="text-end">
-                  <div class="dropdown">
-                    <a class="btn btn-outline-0" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li>
-                          <form action="/admin/leave/approve/<%= leave._id %>" method="POST">
-                            <button type="submit" class="dropdown-item">
-                              <i class="fas fa-check text-success"></i> Approve
-                            </button>
-                          </form>
-                      </li>
-                      <li>
-                          <form action="/admin/leave/reject/<%= leave._id %>" method="POST">
-                            <button type="submit" class="dropdown-item">
-                              <i class="fas fa-times text-danger"></i> Reject
-                            </button>
-                          </form>
-                      </li>
-                      <li>
-                        <form action="/admin/leave/delete/<%= leave._id %>" method="POST">
-                          <button type="submit" class="dropdown-item">
-                            <i class="fa-regular fa-trash-can text-danger"></i> Delete
-                          </button>
-                        </form>
-                      </li>
-                    </ul>
-                  </div>
-                </td>
               </tr>
               <% } )%>
                 <% }else{ %>
@@ -102,5 +71,5 @@
 
     </main>
 
-    <!-- Footer -->
-    <%- include('../partials/footer') %>
+<!-- Footer -->
+<%- include('./partials/footer') %>

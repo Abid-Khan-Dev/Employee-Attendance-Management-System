@@ -5,12 +5,11 @@ const Leave = require("../../models/Leave");
 // for getting all leaves
 router.get("/", async (req, res) => {
   const leaves = await Leave.find().populate("employeeId");
-  console.log(leaves);
   res.render("./admin/leaveRequest", { leaves });
 });
 
 // for approving leave
-router.get("/approve/:id", async (req, res) => {
+router.post("/approve/:id", async (req, res) => {
   const leave = await Leave.findById(req.params.id);
   if (!leave) {
     req.flash("error", "Leave not found");
@@ -24,7 +23,7 @@ router.get("/approve/:id", async (req, res) => {
 });
 
 // for rejecting leave
-router.get("/reject/:id", async (req, res) => {
+router.post("/reject/:id", async (req, res) => {
   const leave = await Leave.findById(req.params.id);
   if (!leave) {
     req.flash("error", "Leave not found");
@@ -38,7 +37,7 @@ router.get("/reject/:id", async (req, res) => {
 });
 
 // for deleting leave
-router.get("/delete/:id", async (req, res) => {
+router.post("/delete/:id", async (req, res) => {
   const leave = await Leave.findById(req.params.id);
   if (!leave) {
     req.flash("error", "Leave not found");

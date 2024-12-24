@@ -9,11 +9,11 @@
       <div class="rounded px-3">
 
         <!-- Dashboard Cards section -->
-        <div class="row mb-2 d-flex gap-2 justify-content-around align-items-center ">
+        <div class="row mb-2 d-flex gap-5 align-items-center justify-content-around">
                     
-              <div class=" col-md-3 col-sm-5 shadow bg-white card-design px-3 py-2 rounded d-flex justify-content-between align-items-center">
+              <div class="col-md-3 col-sm-5 shadow bg-white card-design px-3 py-2 rounded d-flex justify-content-between align-items-center">
                 <span class="text-center rounded-circle">
-                  <i class="fa-solid fa-user text-white p-3  bg-success rounded-circle"></i>
+                  <i class="fa-solid fa-user text-white p-3 bg-success rounded-circle"></i>
                 </span>
                 <div>
                   <h5 class="text-end text-success"><%=employees && employees.length > 0 ? employees.length : '0' %></h5>
@@ -49,12 +49,14 @@
 
         </div>
 
-        <!-- view All Pending Requests -->
+        <!-- view All Pending Requests and view Attendace -->
       <div class="row mt-4">
+
+        <!-- Daily leave requests -->
         <div class="col-md-6 col-sm-12 col-lg-5 mb-4">
           <div class="card border-0 shadow bg-white rounded">
               <div class="card-body d-flex flex-column justify-content-between">
-                  <h5 class="card-title text-success">Leave Requests</h5>
+                  <h5 class="card-title text-success text-center">Leave Requests</h5>
                   <ul class="list-group leave-requests list-group-flush flex-grow-1">
                     <% if (leaves && leaves.length > 0) { %>
                      <% leaves.forEach(leave => { %>
@@ -73,17 +75,54 @@
                         </li>
                      <% }) %>
                     <% } else {%>
-                      <li class="list-group-item d-flex justify-content-between align-items-center">No leave requests available.</li>
+                      <li class="list-group-item text-center">No leave requests available.</li>
                       <% } %>
                      
                   </ul>
                   <div class="mt-3">
-                      <a href="#" class="btn btn-outline-primary btn-sm">View All Requests</a>
+                      <a href="/admin/leave" class="btn btn-outline-primary btn-sm">View All Requests</a>
                   </div>
               </div>
           </div>
       </div>
 
+        <!-- Daily Attendance -->
+      <div class="col-sm-12 col-md-6 mb-4">
+        <div class="card border-0 shadow bg-white rounded">
+            <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title text-center text-success">Today Attendance</h5>
+                  <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">Check In</th>
+                      <th scope="col">Check Out</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if (attendance && attendance.length > 0) { %>
+                    <% attendance.forEach(att => { %>
+                    <tr>
+                      <td><%= att.employeeId.firstName %><%= att.employeeId.lastName %></td>
+                      <td><%= att.location.locationName %></td>
+                      <td><%= att.checkIn ? att.checkIn.toLocaleTimeString() : 'N/A' %></td>
+                      <td><%= att.checkOut ? att.checkOut.toLocaleTimeString() : 'N/A'  %></td>
+                      <% }) %>
+                      <% } else {%>
+                        <td class="text-center" colspan="4" >No Attendance available.</td>
+                        <% } %>
+                    </tr>
+                  
+                  </tbody>
+                  
+                </table>
+                <div class="mt-3">
+                    <a href="/admin/reports" class="btn btn-outline-primary btn-sm">View All Attendance</a>
+                </div>
+            </div>
+        </div>
+    </div>
       </div>
       
       
