@@ -1,0 +1,77 @@
+.login-container, .signup-container {
+    width: 400px;
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+@media only screen and (min-width: 269px) and (max-width: 575px) {
+    .container-fluid {
+        margin: 0;
+        padding: 0;
+    }
+
+    .login-container, .signup-container {
+        width: 300px;
+        max-width: 100%;
+    }
+
+    .signup-container div .form-control, .form-label,
+    .login-container div .form-control, .form-label {
+        font-size: 16px;
+    }
+
+    .login-container input[type="submit"],
+    .signup-container input[type="submit"] {
+        padding: 2px;
+        font-size: 19px;
+    }
+
+    .login-container p, .signup-container p,
+    .login-container a, .signup-container a {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (min-width: 80px) and (max-width: 269px) {
+    .container-fluid {
+        margin: 0;
+        padding: 0;
+    }
+
+    .login-container, .signup-container {
+        width: calc(100% - 20px); /* Dynamically adjust the width */
+        padding: 10px; /* Add spacing */
+        max-width: 100%;
+        box-sizing: border-box; /* Include padding in the width */
+    }
+
+    h2 {
+        font-size: calc(18px - 4px); /* Gradually scale heading size */
+        margin-bottom: 10px;
+        text-align: center; /* Ensure heading is centered */
+    }
+
+    .form-label {
+        font-size: calc(14px - 2px); /* Scale label font size */
+    }
+
+    .form-control {
+        font-size: calc(14px - 2px); /* Scale input font size */
+        padding: calc(10px - 3px); /* Adjust padding for inputs */
+        width: 100%; /* Ensure full width for small screens */
+    }
+
+    input[type="submit"] {
+        font-size: calc(16px - 3px); /* Scale button font size */
+        padding: calc(8px - 2px); /* Adjust button padding */
+        width: 100%; /* Full-width submit button for narrow screens */
+    }
+
+    p, a {
+        font-size: calc(12px - 2px); /* Scale paragraph and link text */
+        text-align: center; /* Center align text and links */
+    }
+}

@@ -6,48 +6,50 @@
 
         <!-- Content -->
         <main class="main p-3">
-            <div class="d-flex justify-content-between p-3 m-2">
+            <div class="d-flex justify-content-between p-3 m-2 flex-wrap gap-2">
                 <h4 class="page-title">Edit Shift</h4>
                 <a class="btn btn-primary text-center rounded-pill" href="/admin/shifts" role="button"><i class="fa-solid fa-arrow-left"></i> Back</a>
             </div>
 
-
-            <form action="/admin/shifts/edit/<%= shift._id %>" method="post" class="p-5">
+            <!-- Form -->
+            <form action="/admin/shifts/edit/<%= shift._id %>" method="post" class="p-3">
                 <div class="row">
-                    <div class="col">
+
+                    <!-- Start time -->
+                    <div class="col-sm-6 mb-3">
                         <label for="startTime" class="form-label">Start Time</label>
                         <input type="time" class="form-control" id="startTime" name="startTime"
                             value="<%= shift.startTime %>"></label>
                     </div>
-                    <div class="col">
+
+                    <!-- End time -->
+                    <div class="col-sm-6 mb-3">
                         <label for="endTime" class="form-label">End Time</label>
                         <input type="time" class="form-control" id="endTime" name="endTime"
                             value="<%= shift.endTime %>"></label>
                     </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col">
-
+                
+                    <!-- Status -->
+                    <div class="col-sm-6 mb-3">
                         <label class="gen-label">Status</label>
                         <% if (shift.statusShift==='active' ) { %>
                             <div>
                                 <label class="me-3"><input type="radio" name="statusShift" value="active" checked>
                                     Active</label>
-
                                 <label><input type="radio" name="statusShift" value="inactive"> Inactive</label>
                             </div>
                             <% } else {%>
                                 <div>
                                 <label class="me-3"><input type="radio" name="statusShift" value="active">
                                     Active</label>
-
                                 <label><input type="radio" name="statusShift" value="inactive" checked> Inactive</label>
                     </div>
                     <% } %>
                 </div>
                 </div>
+                
+                <!-- Button -->
                 <div class="d-flex justify-content-center">
-
                     <button type="submit" class="btn btn-primary ">SAVE CHANGES</button>
                 </div>
             </form>

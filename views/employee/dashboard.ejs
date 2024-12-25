@@ -9,85 +9,93 @@
  
     <!-- Content -->
     <main class="main">
-      <div class="rounded px-3">
-        <div class="card">
-          <h3 class="card-header">Profile</h3>
-          <div class="card-body p-4">
+     
 
-            <div class="row mb-3 text-capitalize">
-              <div class="col-md-2">
-                Employee ID
-              </div>
-              <div class="col-md-5">
-                <%= employee.employeeId %>
-              </div>
-            </div>
-
-            <div class="row mb-3 text-capitalize">
-              <div class="col-md-2">
-                Full Name
-              </div>
-              <div class="col-md-5">
-                <%= employee.firstName %>
-                  <%= employee.lastName %>
-              </div>
-            </div>
-
-            <div class="row mb-3 text-capitalize">
-              <div class="col-md-2">
-                Email
-              </div>
-              <div class="col-md-5">
-                <%= employee.email %>
-              </div>
-            </div>
-
-            <div class="row mb-3 text-capitalize">
-              <div class="col-md-2">
-                Phone
-              </div>
-              <div class="col-md-5">
-                <%= employee.phone %>
-              </div>
-            </div>
-
-            <div class="row mb-3 text-capitalize">
-              <div class="col-md-2">
-                Gender
-              </div>
-              <div class="col-md-5">
-                <%= employee.gender %>
-              </div>
-            </div>
-
-            <div class="row mb-3 text-capitalize">
-              <div class="col-md-2">
-                Department
-              </div>
-              <div class="col-md-5">
-                <%= employee.department && employee.department.departmentName ? employee.department.departmentName : 'N/A' %>
-              </div>
-            </div>
-
-            <div class="row mb-3 text-capitalize">
-              <div class="col-md-2">
-                Shift
-              </div>
-              <div class="col-md-5"> 
-                <% if (employee.shift && employee.shift.startTime && employee.shift.endTime) { %>
-                  <%= employee.shift.startTime %> - <%= employee.shift.endTime %>
-                 
-                <% } else {%>
-                  N/A
-                  <% } %>
-                   
+        <!-- Profile Card -->
+         <div class="row">
+          <div class="col-lg-9 offset-lg-1">
+            <div class="card">
+              <h3 class="card-header">Profile</h3>
+              <div class="card-body p-4">
+    
+                <div class="row mb-3 text-capitalize">
+                  <div class="col-md-2">
+                    Employee ID
+                  </div>
+                  <div class="col-md-5">
+                    <%= employee.employeeId %>
+                  </div>
+                </div>
+    
+                <div class="row mb-3 text-capitalize">
+                  <div class="col-md-2">
+                    Full Name
+                  </div>
+                  <div class="col-md-5">
+                    <%= employee.firstName %>
+                      <%= employee.lastName %>
+                  </div>
+                </div>
+    
+                <div class="row mb-3 text-capitalize">
+                  <div class="col-md-2">
+                    Email
+                  </div>
+                  <div class="col-md-5">
+                    <%= employee.email %>
+                  </div>
+                </div>
+    
+                <div class="row mb-3 text-capitalize">
+                  <div class="col-md-2">
+                    Phone
+                  </div>
+                  <div class="col-md-5">
+                    <%= employee.phone %>
+                  </div>
+                </div>
+    
+                <div class="row mb-3 text-capitalize">
+                  <div class="col-md-2">
+                    Gender
+                  </div>
+                  <div class="col-md-5">
+                    <%= employee.gender %>
+                  </div>
+                </div>
+    
+                <div class="row mb-3 text-capitalize">
+                  <div class="col-md-2">
+                    Department
+                  </div>
+                  <div class="col-md-5">
+                    <%= employee.department && employee.department.departmentName ? employee.department.departmentName : 'N/A' %>
+                  </div>
+                </div>
+    
+                <div class="row mb-3 text-capitalize">
+                  <div class="col-md-2">
+                    Shift
+                  </div>
+                  <div class="col-md-5"> 
+                    <% if (employee.shift && employee.shift.startTime && employee.shift.endTime) { %>
+                      <%= employee.shift.startTime %> - <%= employee.shift.endTime %>
+                     
+                    <% } else {%>
+                      N/A
+                      <% } %>
+                       
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          
+         </div>
+       
 
 
-      </div>
+     
     </main>
 
     <!-- Footer -->

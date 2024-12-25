@@ -116,7 +116,32 @@ body {
     }
 
     .sidebar.active {
-      width: 220px;
+      width: 180px;
+      visibility: visible;
+    }
+  }
+/* Responsive Sidebar up to 576px */
+  @media (max-width: 576px) {
+    
+    
+    .sidebar.active {
+      width: 180px;
+      visibility: visible;
+    }
+  }
+
+
+  @media (max-width: 358px) {
+    #toggleSidebar{
+      font-size: 10px;
+      position: absolute;
+      left: 8px;
+      top: 6px;
+      z-index: 1;
+    }
+    
+    .sidebar.active {
+      width: 100%;
       visibility: visible;
     }
   }
