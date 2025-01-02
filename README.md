@@ -1,7 +1,20 @@
-# Employee Attendance Management System
+![image](https://github.com/user-attachments/assets/5abd0736-9bf4-4a74-8009-9f0d77cd70c4)# Employee Attendance Management System
 
 The **Employee Attendance Management System** is a web-based application designed to help organizations manage employee attendance efficiently. The system provides separate dashboards for employees and administrators, allowing each to manage their tasks effectively.
 
+## Demo
+
+To try out the Admin Panel and Employee Login, follow the steps below:
+
+1. **Admin Login**: 
+   - **Email**: admin@admin.com
+   - **Password**: admin@pass
+   - Access the Admin Panel at: [Admin Panel](https://employee-attendance-management-system.onrender.com/admin)
+
+2. **Employee Login**: 
+   - After the admin creates an employee, the employee can log in here: [Employee Login](https://employee-attendance-management-system.onrender.com/)
+
+  
 ## Features
 
 ### General Features:
