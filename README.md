@@ -1,4 +1,6 @@
-![image](https://github.com/user-attachments/assets/5abd0736-9bf4-4a74-8009-9f0d77cd70c4)# Employee Attendance Management System
+# Employee Attendance Management System
+
+![Employee Attendance Management System](https://github.com/user-attachments/assets/5abd0736-9bf4-4a74-8009-9f0d77cd70c4)
 
 The **Employee Attendance Management System** is a web-based application designed to help organizations manage employee attendance efficiently. The system provides separate dashboards for employees and administrators, allowing each to manage their tasks effectively.
 
@@ -14,7 +16,6 @@ To try out the Admin Panel and Employee Login, follow the steps below:
 2. **Employee Login**: 
    - After the admin creates an employee, the employee can log in here: [Employee Login](https://employee-attendance-management-system.onrender.com/)
 
-  
 ## Features
 
 ### General Features:
@@ -34,7 +35,6 @@ To try out the Admin Panel and Employee Login, follow the steps below:
 - **Attendance Reports**: Admins can view detailed attendance records for each employee.
 - **Dashboard**: A comprehensive overview of all employees and their attendance data.
 
-
 ## Dependencies
 
 This project requires the following dependencies:
@@ -47,7 +47,6 @@ This project requires the following dependencies:
 - **ejs**: Templating engine for rendering views.
 - **express-session**: For managing user sessions.
 - **connect-flash**: For flash messages during user interactions.
-
 
 ## Installation
 
