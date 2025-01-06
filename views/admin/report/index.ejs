@@ -13,8 +13,8 @@
         <h5 class="page-title">Reports</h5>
       </div>
 
-      <div class="table-responsive">
-      <table class="table table-hover caption-top border ">
+      <div class="table-responsive py-5">
+      <table id="dataTable" class="table table-striped table-hover">
         <caption>List of Reports</caption>
         <thead>
           <tr>
@@ -63,12 +63,7 @@
                 </td>
               </tr>
               <% } )%>
-                <% }else{ %>
-                  <tr>
-                    <td colspan="8" class="text-center">No Reports found.</td>
-                  </tr>
-                  <% } %>
-
+                <% }%>
         </tbody>
       </table>
       </div>

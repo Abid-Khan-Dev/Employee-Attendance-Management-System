@@ -108,6 +108,48 @@ body {
   z-index: 1050;
 }  
 
+/* Resetting the bootstrap input box & outline */
+.form-control:focus {
+ box-shadow: none !important;
+ outline: none !important;
+}
+
+/* Center-align and set width for the first column  */
+table th:first-child,
+table td:first-child{
+  text-align: center;
+  width: 5%;
+}
+
+/* Override styles for the first column in '.no-style-table' */
+.no-style-table th:first-child,
+.no-style-table td:first-child{
+  text-align: start;
+  width: auto;
+}
+
+
+/* Active and InActive card */
+.custom-badge{
+  font-size: 14px;
+  display: inline-block;
+  min-width: 95px;
+  text-align: center;
+  padding: 1px 10px;
+  border-radius: 5px;
+}
+.statusActive{
+  background-color: #e5faf3;
+  border: 1px solid #00ce7c;
+  color: #00ce7c;
+}
+.statusInactive{
+  background-color: #ffe5e6;
+  color: #fe0000;
+  border: 1px solid #fe0000;
+}
+
+
   /* Responsive Sidebar */
   @media (max-width: 992px) {
     .sidebar {

@@ -18,8 +18,8 @@
                 </div>
                 
                 <!-- Table for departments -->
-                <div class="table-responsive">
-                  <table class="table table-hover caption-top border mt-5">
+                <div class="table-responsive py-5">
+                  <table id="dataTable" class="table table-striped table-hover  no-style-table">
                     <caption>List of Departments</caption>
                     <thead>
                       <tr>
@@ -40,7 +40,10 @@
                               <%= department.departmentName %>
                             </td>
                             <td class="text-capitalize">
-                              <%= department.statusDep %>
+                              <span class="custom-badge <%= department.statusDep === 'active'? "statusActive" : 'statusInactive'  %>">
+
+                                <%= department.statusDep %>
+                              </span>
                             </td>
                             <td class="text-end">
                               <div class="dropdown">
@@ -63,11 +66,7 @@
                             </td>
                           </tr>
                           <% }) %>
-                            <% } else {%>
-                              <tr>
-                                <td colspan="5" class="text-center">No departments found.</td>
-                              </tr>
-                              <% } %>
+                            <% }%>
                     </tbody>
                   </table>
                 </div>

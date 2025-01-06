@@ -15,8 +15,8 @@
       </div>
 
       <!-- Reports table -->
-      <div class="table-responsive">
-        <table class="table table-hover caption-top border">
+      <div class="table-responsive py-5">
+        <table id="dataTable" class="table table-striped table-hover">
           <caption>List of Reports</caption>
           <thead>
             <tr>
@@ -32,46 +32,41 @@
             </tr>
           </thead>
           <tbody>
-            <% if(attendance && attendance.length> 0) {%>
-              <% attendance.forEach((att, index )=> { %>
+            <% if(attendance && attendance.length > 0) { %>
+              <% attendance.forEach((att, index) => { %>
                 <tr>
                   <th scope="row">
                     <%= index + 1 %>
                   </th>
                   <td>
                     <%= att.employeeId.firstName %>
-                      <%= att.employeeId.lastName %>
+                    <%= att.employeeId.lastName %>
                   </td>
-  
+    
                   <td>
-                    <%= att.date.toLocaleDateString() %>
-                  </td>
-                  <td>
-                    <%= att.location.locationName %>
+                    <%= att.date ? att.date.toLocaleDateString() : 'N/A' %>
                   </td>
                   <td>
-                    <%= att.employeeId.department.departmentName %>
+                    <%= att.location ? att.location.locationName : 'N/A' %>
                   </td>
                   <td>
-                    <%= att.employeeId.shift.startTime %>
-                    - <%= att.employeeId.shift.endTime %>
+                    <%= att.employeeId.department ? att.employeeId.department.departmentName : 'N/A' %>
+                  </td>
+                  <td>
+                    <%= att.employeeId.shift ? `${att.employeeId.shift.startTime} - ${att.employeeId.shift.endTime}` : 'N/A' %>
                   </td>
                   <td>
                     <%= att.checkIn ? att.checkIn.toLocaleTimeString() : 'N/A' %>
                   </td>
                   <td>
-                    <%= att.message %>
+                    <%= att.message ? att.message : 'N/A' %>
                   </td>
                   <td>
                     <%= att.checkOut ? att.checkOut.toLocaleTimeString() : 'N/A' %>
                   </td>
                 </tr>
-                <% } )%>
-                  <% }else{ %>
-                    <tr>
-                      <td colspan="8" class="text-center">No Reports found.</td>
-                    </tr>
-                    <% } %>
+              <% }) %>
+            <% } %>
           </tbody>
         </table>
       </div>
